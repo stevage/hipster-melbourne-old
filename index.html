@@ -1,50 +1,90 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<link href="http://fonts.googleapis.com/css?family=Niconne|Limelight|Lobster|Quicksand:400,700" rel="stylesheet" type="text/css">
-<style>
-  p {
-    font-family: 'Lobster', cursive; 
-    font-size: 72px; 
-    margin: 1em 2em;
-}
-  body {
-     background-image:url('https://s3.amazonaws.com/images.m2i.stamen.com/20140311/watercolor_1nfA_RKfwjc.jpeg');
-  }
-</style>
-<body>
-<p>Hutong dumplings carlton, MSAC empire of the sun swanston the city loop dandenong, melb ball food bloggers pellegrini's the melbourne cup, moomba the bulldogs bourke st mall chaddie fed square, street art werribee wildlife ticket inspector.
+  <head>
+    <title>Hipster Map of Melbourne</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        font-family: 'Lobster', cursive; 
+        font-size: 20px; 
+        margin: 1em 2em;
+        line-height:30px !important;
+      }
+      h1 { font-family: LimeLight; }
+    </style>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="css/light-theme.css">
+    <link rel="stylesheet" href="css/makeitresponsive.css">
+    <link href="http://fonts.googleapis.com/css?family=Niconne|Limelight|Lobster|Quicksand:400,700" rel="stylesheet" type="text/css">
 
-Four seasons in one day brunswick and brunswick st, trams ticket inspector cumulus inc MSAC melbourne cricket ground, collins place old melbourne gaol carlton dandenong avalon is so not melb, world's most liveable city spencer st station richmond tigers chapel street hook turns, the rebels the croft institute Rod Laver.
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="sidepanel">
+      <div class="wrapper">
+        <div class="context subheader">
+          <p>Map created by <a href="http://www.meetup.com/Datahack-Melbourne/events/168328902/">OKFN #datahack</a></p>
+        </div>
+        <h1>Hipster map of Melbourne</h1>
+        <p>Hutong dumplings carlton, MSAC empire of the sun swanston the city loop dandenong, melb ball food bloggers pellegrini's the melbourne cup, moomba the bulldogs bourke st mall chaddie fed square, street art werribee wildlife ticket inspector.
 
-Secret laneway bars vic market, cumulus inc melbourne cricket ground richmond tigers rooftop cinema black is alway in fashion, citylink formula one grand prix lions bar fairy penguins street art, avalon is so not melb prahran hipsters moomba spencer st station melbourne central, graffiti north of the river the corner hotel.
+      Four seasons in one day brunswick and brunswick st, trams ticket inspector cumulus inc MSAC melbourne cricket ground, collins place old melbourne gaol carlton dandenong avalon is so not melb, world's most liveable city spencer st station richmond tigers chapel street hook turns, the rebels the croft institute Rod Laver.
 
-Don dons the melbourne cup, bill clinton ate two bowls naked for satan the australian open ball aami park, Rod Laver moomba trams old melbourne gaol chopper read, cumulus inc victory vs heart richmond tigers trams world's most liveable city, geoffrey rush neatly trimmed moustaches the storm.
+      Secret laneway bars vic market, cumulus inc melbourne cricket ground richmond tigers rooftop cinema black is alway in fashion, citylink formula one grand prix lions bar fairy penguins street art, avalon is so not melb prahran hipsters moomba spencer st station melbourne central, graffiti north of the river the corner hotel.
+  </p>
+  <small>Melbourne Ipsum text by <a href="http://www.melbourneipsum.com.au/">melbourneipsum.com.au</a>.</small>
 
-Dame edna chapel street, NGV culture fix mamasita middle-aged lycra clad cyclists the G' essendon bombers, kylie minogue presets four seasons in one day hu tong dumplings don dons, prahran hipsters the hawks north melbourne shinboners spring racing carnival dumplings, brunswick and brunswick st carlton south melb dim sims.
+        <div class="context footer">
+          <p>Create your maps with ease using <a href="http://cartodb.com">CartoDB</a></p></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 
-Citylink tullamarine, posh brighton cate blanchette yarra victoria street dodgies cold drip coffee, the corner hotel ac/dc bespectacled girls swanston brunswick st hippy, temper trap the storm ticket inspector movida the bulldogs, geoffrey rush don't paint over the banksy's prahran hipsters.
+    <script>
+      function main() {
+        var map = new L.Map('map', {
+          zoomControl: false,
+          center: [-37.8072, 144.9728],
+          zoom: 14
+        });
+        var ts=Math.round(new Date().getTime()/1000.0);
+        L.tileLayer('http://hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?updated=' + ts, {
+          attribution: 'Hipsters + OpenStreetMap'
+        }).addTo(map);
 
-Aami park east brunswick club, citylink the storm moomba don dons running the tan, laksa king melbourne cricket ground geoffrey rush essendon bombers secret laneway bars, the saints etihad stadium the bulldogs NGV culture fix ac/dc, black is alway in fashion spiegeltent purple emerald.
+        cartodb.createLayer(map, 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
+         .addTo(map)
+         .on('done', function(layer) {
 
-Hu tong dumplings moomba, the australian open victoria street dodgies aami park grammar vs scotch cold drip coffee, lions bar burlesque dame edna a macaron connoisseur the rebels, collingwood ferals formula one grand prix brown alley myki queues flemington racecourse, vic market south melb dim sims black is alway in fashion.
+          layer.setInteraction(true);
 
-Brunswick and brunswick st melb, ticket inspector the city loop naked for satan laksa king spiegeltent, the hawks frankston bogans food bloggers dandenong graffiti, vic market the australian open neatly trimmed moustaches yarra the rebels, hipsters the espy the G'.
+          layer.on('featureOver', function(e, pos, latlng, data) {
+            cartodb.log.log(e, pos, latlng, data);
+          });
 
-Mamasita flemington racecourse, north of the river the borek woman kylie minogue brown alley footy, running the tan richmond tigers chopper read spring racing carnival cold drip coffee, ball graffiti chapel street don't paint over the banksy's the australian open, hu tong dumplings laksa king rooftop bars.
+          layer.on('error', function(err) {
+            cartodb.log.log('error: ' + err);
+          });
+        }).on('error', function() {
+          cartodb.log.log("some error occurred");
+        });
+      }
 
-Myki queues swanston, spring racing carnival naked for satan lygon street spruikers cumulus inc north melbourne shinboners, north of the river NGV culture fix richmond tigers world's most liveable city movida, ac/dc collingwood ferals melb aami park cold drip coffee, the storm pellegrini's temper trap.
-
-The G' the rebels, shane warne cold drip coffee the croft institute prahran hipsters brunswick and brunswick st, trams the hawks grammar vs scotch hu tong dumplings chaddie, purple emerald posh brighton graffiti cookie neatly trimmed moustaches, cate blanchette black is alway in fashion pellegrini's.
-
-Emerald peacock spiegeltent, naked for satan melbourne cricket ground fairy penguins world's most liveable city the croft institute, the australian open richmond tigers werribee wildlife the melbourne cup spencer st station, shane warne the espy collins place the emerald peacock formula one grand prix, rooftop cinema temper trap movida.
-
-The saints lygon street spruikers, melbourne cricket ground ticket inspector formula one grand prix trams spring racing carnival, the croft institute Rod Laver bespectacled girls avalon is so not melb richmond tigers, etihad stadium neatly trimmed moustaches shane warne naked for satan food bloggers, don dons carlton brown alley.
-</p>
-<big>
-Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.
-<br/>
-Melbourne Ipsum text by <a href="http://www.melbourneipsum.com.au/">melbourneipsum.com.au</a>.
-
-</big>
-</body>
+      // you could use $(window).load(main);
+      window.onload = main;
+    </script>
+  </body>
 </html>
