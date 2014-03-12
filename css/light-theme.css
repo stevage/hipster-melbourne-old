@@ -1,18 +1,64 @@
 /* Change the styles below in order to customize your template */
 
-body{font-family: Helvetica, Arial; font-weight: regular; font-size: 15px; color: #555; background-color: #FFF; margin: 0;}
-h1{font-weight: bold; font-size: 31px; letter-spacing: -1px; color: #333; line-height: 33px;}
+@font-face {
+    font-family: 'corkiregular';
+    src: url('fonts/corki-regular-webfont.eot');
+    src: url('fonts/corki-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/corki-regular-webfont.woff') format('woff'),
+         url('fonts/corki-regular-webfont.ttf') format('truetype'),
+         url('fonts/corki-regular-webfont.svg#corkiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'duke_regularregular';
+    src: url('fonts/duke-webfont.eot');
+    src: url('fonts/duke-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/duke-webfont.woff') format('woff'),
+         url('fonts/duke-webfont.ttf') format('truetype'),
+         url('fonts/duke-webfont.svg#duke_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body{font-family: Helvetica, Arial; font-weight: regular; font-size: 15px; color: #64605A; background-color: #FFF; margin: 0;}
+h1{font-weight: bold; font-size: 41px; letter-spacing: -1px; color: #333; line-height: 33px; font-family: 'duke_regularregular';
+	text-align: center;
+}
+
 h3{font-weight: bold; font-size: 12px; color: #CCC; text-transform: uppercase; margin: 10px 0 0 0;}
-p{margin: 8px 0 20px 0; line-height: 18px;}
-a, a:visited{color: #397DB8; text-decoration: none;}
-a:hover{text-decoration: underline;}
+p{margin: 8px 0 20px 0; line-height: 18px; 
+}
+p {
+  font-family: 'corkiregular';
+  font-size: 22px; 
+  margin: 1em 0;
+  line-height:30px !important;
+}
+a, a:visited{color: #64605A; text-decoration: underline;}
+a:hover{text-decoration: underline;
+	color: #BC5437;
+}
 
 .wrapper{display: block; padding: 4px 30px 0 30px;}
 
 .map{background-color:#eee; position: absolute; top: 0; left: 0; bottom: 0; width: 67%; *height:100%;}
-.sidepanel{background-color:#FFF; position: absolute; top: 0; right: 0; bottom: 0; width: 33%; height: 100%; overflow: auto;}
-
+.sidepanel{
+	background: url(plaid.jpg) #F3EAD9;
+	position: absolute; top: 0; right: 0; bottom: 0; width: 33%; height: 100%; overflow: auto;}
+.sidepanel h1{
+	background: url(hr.png) center bottom no-repeat;
+	padding-bottom: 36px;
+}
 .context{font-family: Helvetica, Arial; font-size: 13px; color: #999; padding: 10px 0 0 0;}
-.subheader{border-bottom: 1px solid #ddd;}
+.subheader{border-bottom: 1px solid #64605a;
+	text-align: center;
+}
+.subheader p{margin: 0.4em 0;
+font-size: 16px;
+}
 .footer{border-top: 1px solid #ddd; margin-top: 30px;}
 .titleBlock{text-align: right;}
