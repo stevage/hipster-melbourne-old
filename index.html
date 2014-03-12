@@ -55,12 +55,12 @@
         var map = new L.Map('map', {
           zoomControl: false,
           center: [-37.8072, 144.9728],
-          minZoom: 14,
+          minZoom: 13,
           maxZoom: 17,
           zoom: 14
         });
         var ts=Math.round(new Date().getTime()/1000.0);
-        L.tileLayer('http://hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?updated=' + ts, {
+        L.tileLayer('http://hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?metatile=4&updated=' + ts, {
           attribution: 'Hipsters + OpenStreetMap'
         }).addTo(map);
 
