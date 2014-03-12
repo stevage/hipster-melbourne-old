@@ -4,6 +4,7 @@
     <title>Hipster Map of Melbourne</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="refresh" content="120" />
     <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
     <style>
       html, body, #map {
@@ -43,10 +44,6 @@
       Secret laneway bars vic market, cumulus inc melbourne cricket ground richmond tigers rooftop cinema black is alway in fashion, citylink formula one grand prix lions bar fairy penguins street art, avalon is so not melb prahran hipsters moomba spencer st station melbourne central, graffiti north of the river the corner hotel.
   </p>
   <small>Melbourne Ipsum text by <a href="http://www.melbourneipsum.com.au/">melbourneipsum.com.au</a>.</small>
-
-        <div class="context footer">
-          <p>Create your maps with ease using <a href="http://cartodb.com">CartoDB</a></p></p>
-        </div>
       </div>
     </div>
     
@@ -58,6 +55,8 @@
         var map = new L.Map('map', {
           zoomControl: false,
           center: [-37.8072, 144.9728],
+          minZoom: 14,
+          maxZoom: 17,
           zoom: 14
         });
         var ts=Math.round(new Date().getTime()/1000.0);
