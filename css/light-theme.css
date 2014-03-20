@@ -25,7 +25,9 @@
 
 
 body{font-family: Helvetica, Arial; font-weight: regular; font-size: 15px; color: #64605A; background-color: #FFF; margin: 0;}
-h1{font-weight: bold; font-size: 41px; letter-spacing: -1px; color: #333; line-height: 33px; font-family: 'duke_regularregular';
+h1{
+    font-weight: bold; 
+    font-size: 50px; letter-spacing: -1px; color: #333; line-height: 33px; font-family: 'duke_regularregular';
 	text-align: center;
 }
 
@@ -51,9 +53,12 @@ a:hover{text-decoration: underline;
 	position: absolute; top: 0; right: 0; bottom: 0; width: 33%; height: 100%; overflow: auto;}
 .sidepanel h1{
 	background: url(hr.png) center bottom no-repeat;
-	padding-bottom: 36px;
+	padding-bottom: 50px;
 }
-.context{font-family: Helvetica, Arial; font-size: 13px; color: #999; padding: 10px 0 0 0;}
+.context{
+    font-family: Helvetica, Arial; font-size: 13px; color: #999; padding: 10px 0 0 0;
+    z-index:10;
+}
 .subheader{border-bottom: 1px solid #64605a;
 	text-align: center;
 }
@@ -62,3 +67,34 @@ font-size: 16px;
 }
 .footer{border-top: 1px solid #ddd; margin-top: 30px;}
 .titleBlock{text-align: right;}
+.fronttext {
+    position:relative;
+    z-index:10;
+}
+.backgroundtext {
+position: absolute;
+right:0;
+top:0;
+color: #C9C4A5;
+font-family:lobster;
+z-index:0;
+opacity:0.5;
+}
+
+.witty { margin-bottom: 10em; }
+
+.credits {
+    position:absolute;
+    bottom:2em;
+    right:0;
+    z-index:1;
+    width:95%;
+    font-size: 10px; 
+}
+
+.cartodb-legend-stack {
+    bottom: 120px !important; 
+    left: 69% !important;
+    
+    right: auto !important;
+}
