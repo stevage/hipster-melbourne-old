@@ -27,7 +27,8 @@
 body{font-family: Helvetica, Arial; font-weight: regular; font-size: 15px; color: #64605A; background-color: #FFF; margin: 0;}
 h1{
     font-weight: bold; 
-    font-size: 50px; letter-spacing: -1px; color: #333; line-height: 33px; font-family: 'duke_regularregular';
+    font-size: 50px; letter-spacing: -1px; color: #333; 
+    line-height: 38px; font-family: 'duke_regularregular';
 	text-align: center;
 }
 
@@ -50,10 +51,17 @@ a:hover{text-decoration: underline;
 .map{background-color:#eee; position: absolute; top: 0; left: 0; bottom: 0; width: 67%; *height:100%;}
 .sidepanel{
 	background: url(plaid.jpg) #F3EAD9;
-	position: absolute; top: 0; right: 0; bottom: 0; width: 33%; height: 100%; overflow: auto;}
+	position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    width: 25%; height: 100%; overflow: auto;
+    border-left: 1px double #333;
+}
 .sidepanel h1{
 	background: url(hr.png) center bottom no-repeat;
 	padding-bottom: 50px;
+
 }
 .context{
     font-family: Helvetica, Arial; font-size: 13px; color: #999; padding: 10px 0 0 0;
@@ -94,7 +102,23 @@ opacity:0.5;
 
 .cartodb-legend-stack {
     bottom: 120px !important; 
-    left: 69% !important;
+    left: 77% !important;
     
     right: auto !important;
+}
+
+.cartodb-infowindow p, .cartodb-popup p {
+    /* text in the popup windows */
+    font-family: 'corkiregular'  !important;
+    line-height: 14px !important;
+    font-size: 18px !important;
+}
+
+.cartodb-popup h1 {
+    font-family:'duke_regularregular' !important;
+    font-size:36px !important;
+}
+
+.cartodb-infowindow {
+    opacity:0.9 !important;
 }
