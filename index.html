@@ -97,7 +97,21 @@
         /*L.tileLayer('http://hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?metatile=8&updated=' + ts, {
           attribution: 'Hipsters + OpenStreetMap'
         }).addTo(map);*/
+        /* This method serves tiles from our TileMill */
+        /*
+        L.tileLayer('http://map.hipstermelbourne.org:5500/v2/hipster/{z}/{x}/{y}.png?metatile=8&updated=' + ts, {
+                attribution: 'Hipsters + OpenStreetMap'
+              }).addTo(map);
 
+        cartodb.createLayer(map, 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
+         .addTo(map)
+         .on('done', function(layer) {
+
+          layer.setInteraction(true);
+        });*/
+
+        /* This method serves tiles from CartoDB... */
+        
         cartodb.createVis('map', 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
          //.addTo(map)
          .done(function(vis, layers) {
@@ -108,9 +122,6 @@
             cartodb.log.log(e, pos, latlng, data);
           });
 
-          /*layer.on('error', function(err) {
-            cartodb.log.log('error: ' + err);
-          });*/
         }).on('error', function() {
           cartodb.log.log("some error occurred");
         });
