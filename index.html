@@ -4,13 +4,25 @@
     <title>Hipster Map of Melbourne</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <!--<meta http-equiv="refresh" content="120" />-->
-    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/light-theme.css' rel='stylesheet' />
     <style>
       html, body, #map {
         height: 100%;
         padding: 0;
         margin: 0;
+      }
+      body {
+        display: flex;
+      } 
+      #map { 
+        top:0; 
+        bottom:0; 
+        flex-grow: 1; 
+      }
+      .sidepanel {
+        width: 400px;
       }
       p {
         font-family: 'Lobster', cursive; 
@@ -19,13 +31,29 @@
         line-height:30px !important;
       }
       h1 { font-family: LimeLight; }
+
+      .mapboxgl-popup-content {
+        background: #fffff0;
+        box-shadow: 1px 1px 2px 2px #998;
+        max-width:450px;
+      }
+
+      .mapboxgl-popup-content div {
+        border: 1px solid grey;
+        margin:0.5em;
+        padding:1em;
+      }
+
+      .mapboxgl-popup-content h2 {
+        font-family: Lobster, cursive;
+        text-align: center;
+        
+      }
+      .mapboxgl-popup-content p {
+        font-family: corkiregular, serif;
+        
+      
     </style>
-    <link rel="stylesheet" href="css/light-theme.css">
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
-    <!--[if lte IE 8]>
-      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
-    <![endif]-->
-    <link rel="stylesheet" href="css/makeitresponsive.css">
     <link href="http://fonts.googleapis.com/css?family=Niconne|Limelight|Lobster|Quicksand:400,700" rel="stylesheet" type="text/css">
 
   </head>
@@ -81,54 +109,43 @@
       </div>
     </div>
     
-    <!-- include cartodb.js library -->
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 
     <script>
-      function main() {
-        var map = new L.Map('map', {
-          zoomControl: false,
-          center: [-37.8072, 144.9728],
-          minZoom: 13,
-          maxZoom: 17,
-          zoom: 14
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic3RldmFnZSIsImEiOiJGcW03aExzIn0.QUkUmTGIO3gGt83HiRIjQw';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/stevage/ciz68fsec00112rpal5hjru07', //stylesheet location
+            center: [144.97, -37.81], // starting position
+            zoom: 15, // starting zoom,
+            minZoom: 14,
+            maxZoom: 16
         });
-        var ts=Math.round(new Date().getTime()/1000.0);
-        /*L.tileLayer('http://hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?metatile=8&updated=' + ts, {
-          attribution: 'Hipsters + OpenStreetMap'
-        }).addTo(map);*/
-        /* This method serves tiles from our TileMill */
-        /*
-        L.tileLayer('http://map.hipstermelbourne.org:5500/v2/hipster/{z}/{x}/{y}.png?metatile=8&updated=' + ts, {
-                attribution: 'Hipsters + OpenStreetMap'
-              }).addTo(map);
+        var layers = ['hipster coffee', 'hipster shopping','hipster other','hipster clothing','hipster entertainment','hipster drink', 'hipster food'];
 
-        cartodb.createLayer(map, 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
-         .addTo(map)
-         .on('done', function(layer) {
+        map.on('click', function(e) {
+            var features = map.queryRenderedFeatures(e.point, { layers: layers });
 
-          layer.setInteraction(true);
-        });*/
+            if (!features.length) {
+                return;
+            }
 
-        /* This method serves tiles from CartoDB... */
-        
-        cartodb.createVis('map', 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
-         //.addTo(map)
-         .done(function(vis, layers) {
+            var feature = features[0];
 
-          layers[1].setInteraction(true);
-
-          layers[1].on('featureOver', function(e, pos, latlng, data) {
-            cartodb.log.log(e, pos, latlng, data);
-          });
-
-        }).on('error', function() {
-          cartodb.log.log("some error occurred");
+            var p = feature.properties;
+            var popup = new mapboxgl.Popup()
+                .setLngLat(feature.geometry.coordinates)
+                .setHTML('<div>' + 
+                    '<h2>' + p.name + '</h2>' + 
+                    '<p>' + p.keywords + '</p>' +
+                    '</div>')
+                .addTo(map);
         });
-      }
-
-      // you could use $(window).load(main);
-      window.onload = main;
+        map.on('load', function e() {
+            map.on('mousemove', function (e) {
+                var features = map.queryRenderedFeatures(e.point, { layers: layers });
+                map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+            });
+        });
     </script>
   </body>
 </html>
