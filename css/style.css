@@ -90,15 +90,10 @@ body {
 /* Typography */
 body{font-family: Helvetica, Arial; font-weight: regular; font-size: 15px; color: #64605A; background-color: #FFF; margin: 0;}
 
-p {
-    font-family: 'Lobster', cursive; 
-    font-size: 20px; 
-    margin: 1em 2em;
-    line-height:30px !important;
-}
 h1 { 
-    font-family: corkiregular;/*LimeLight; */
-    font-size:50px;/*50px;*/
+    font-family: 'Lobster', cursive; 
+    /*corkiregular;LimeLight; */
+    font-size:40px;/*50px;*/
     background: url(hr.png) center bottom no-repeat;
     padding-bottom: 50px;
     text-align: center;
@@ -126,7 +121,17 @@ h1 {
     };
 }
 
-.witty { margin-bottom: 10em; }
+.witty { 
+    margin-bottom: 10em; 
+}
+
+.witty p {
+    font-family: corkiregular;
+    font-size: 20px; 
+    margin: 1em;
+    line-height:30px !important;
+}
+
 
 .credits {
     position:absolute;
@@ -159,7 +164,12 @@ h1 {
 }
 .mapboxgl-popup-content p {
     font-family: corkiregular, serif;
+    font-size: 20px; 
+    margin: 1em 2em;
+    line-height:30px !important;
 }
+
+
 .mapboxgl-popup-close-button {
     display:none;
 }  
