@@ -16,8 +16,7 @@ body {
     max-width:400px;
     height: 100vh;
     position:relative;
-    /*flex-grow:0.5;*/
-    /*transition: width 1s,flex-grow 2s;*/
+    border-left:1px solid #bba;
 }
 
 #collapsebtn {
