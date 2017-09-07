@@ -31,7 +31,8 @@ map.on('click', function(e) {
 map.on('load', function e() {
     map.addSource('hipster-geojson', {
         type: 'geojson',
-        data: 'https://crossorigin.me/http://umap.openstreetmap.fr/en/datalayer/408207/'
+        //data: 'https://crossorigin.me/http://umap.openstreetmap.fr/en/datalayer/408207/'
+        data: 'https://cors-anywhere.herokuapp.com/http://umap.openstreetmap.fr/en/datalayer/408207/'
     });
     // we basically clone the existing hipster content layer, then replace its source with a fresh geojson version.
     var contentLayer = JSON.parse(JSON.stringify(map.getStyle().layers.find(function(l) { return l.id === 'hipster content'; })));
