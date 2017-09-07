@@ -4,8 +4,8 @@
     <title>Hipster Map of Melbourne</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
     <!-- <link href='css/light-theme.css' rel='stylesheet' /> -->
     <!-- <link href='css/makeitresponsive.css' rel='stylesheet' /> -->
     <link href="https://fonts.googleapis.com/css?family=Niconne|Limelight|Lobster|Quicksand:400,700" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
       ga('create', 'UA-54473923-3', 'auto');
       ga('send', 'pageview');
 
-  </script>
+    </script>
 </head>
 <body>
     <div id="map"></div>
@@ -27,7 +27,7 @@
         <div class="backgroundtext">
             Hutong dumplings carlton, MSAC empire of the sun swanston the city loop dandenong, melb ball food bloggers pellegrini's the melbourne cup, moomba the bulldogs bourke st mall chaddie fed square, street art werribee wildlife ticket inspector.
 
-            Collingwood ferals brunswick st hippy, brunswick and brunswick st emerald peacock formula one grand prix essendon bombers a macaron connoisseur, black is alway in fashion MSAC fed square ticket inspector rocking out the espy, swanston world's most liveable city cookie the croft institute dumplings, fairy penguins etihad stadium spring racing carnival.
+ stadium spring racing carnival.
 
             Formula one grand prix the croft institute, the espy a macaron connoisseur world's most liveable city fairy penguins the rebels, the hawks collingwood ferals emerald peacock ticket inspector NGV culture fix, movida kath and kim bill clinton ate two bowls victoria street dodgies street art, werribee wildlife aami park rooftop cinema.
 
@@ -48,72 +48,21 @@
             Presets melb, chopper read movida aami park don dons running the tan, purple emerald ball richmond tigers swanston burlesque, the australian open vic market moomba mamasita warehouse chic, frankston bogans geoffrey rush spring racing carnival.
         </div>
     <div id="collapsebtn"></div>
-      <div class="fronttext">
-            <div class="witty">
-              <h1>Hipster Map of Melbourne</h1>
-              <p>How did the hipster burn her tongue?<br/>She drank her coffee before it was cool.</p>
-              <br/>
-              <p><a href="http://suggest.hipstermelbourne.org/">Got a suggestion?</a></p>
-            </div>
-
-
-
-      </div>
-      <div class="credits">
+    <div class="fronttext">
+        <div class="witty">
+            <h1>Hipster Map of Melbourne</h1>
+            <p>How did the hipster burn her tongue?<br/>She drank her coffee before it was cool.</p>
+            <br/>
+            <p><a href="http://suggest.hipstermelbourne.org/">Got a suggestion?</a></p>
+        </div>
+    </div>
+    <div class="credits">
           Mostly by <a href="https://stevebennett.me">Steve Bennett</a>. Full credits and source at <a href="https://github.com/stevage/hipster-melbourne">Github</a>.<br/>
           As seen in <a href="http://www.theage.com.au/victoria/mapping-the-hip-haunts-of-the-fashionably-uncool-20140406-366tz.html"><i>The Age</i> </a>and heard on <a href="http://www.abc.net.au/local/audio/2014/03/19/3962737.htm?site=melbourne">Aunty</a>.
 
-      </div>
+    </div>
 
-  </div>
-
-
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RldmFnZSIsImEiOiJGcW03aExzIn0.QUkUmTGIO3gGt83HiRIjQw';
-    var map = new mapboxgl.Map({
-        container: 'map', 
-        style: 'mapbox://styles/stevage/ciz68fsec00112rpal5hjru07',
-        center: [144.97, -37.81],
-        zoom: 15,
-        minZoom: 14,
-        maxZoom: 16
-    });
-    var layers = ['hipster coffee', 'hipster shopping','hipster other','hipster clothing','hipster entertainment','hipster drink', 'hipster food'];
-
-    map.on('click', function(e) {
-        var features = map.queryRenderedFeatures(e.point, { layers: layers });
-
-        if (!features.length) {
-            return;
-        }
-
-        var feature = features[0];
-
-        var p = feature.properties;
-        var popup = new mapboxgl.Popup()
-        .setLngLat(feature.geometry.coordinates)
-        .setHTML('<div>' + 
-                 '<h2>' + p.name + '</h2>' + 
-                 '<p>' + p.keywords + '</p>' +
-                 '</div>')
-        .addTo(map);
-    });
-    map.on('load', function e() {
-        map.on('mousemove', function (e) {
-            var features = map.queryRenderedFeatures(e.point, { layers: layers });
-            map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-        });
-    });
-    var collapsed = false;
-    document.querySelector('#collapsebtn').addEventListener('click', function(e) {
-        collapsed = !collapsed;
-        if (collapsed) {
-            document.querySelector('.sidepanel').classList.add('collapsed');
-        } else {
-            document.querySelector('.sidepanel').classList.remove('collapsed');
-        }
-        map.resize();
-    });
-</script>
+    </div>
+    <script src='hipster.js'></script>
 </body>
 </html>
